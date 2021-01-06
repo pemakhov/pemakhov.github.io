@@ -12,10 +12,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
-    
-  a {
-    display: block;
-    width: 60px;
-  }
 }
 
+#nav li a {
+  display: block;
+  width: 60px;
+}
