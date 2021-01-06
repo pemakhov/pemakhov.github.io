@@ -38,8 +38,6 @@
       <ul id="nav">
         {% for item in site.data.navigation.docs %}
         <li {% if item.url == page.url %} class="active"{% endif %}><a href="{{ item.url }}">{{ item.title }}</a></li>
-        {{ item.url | jsonify }}
-        {{ page.url | jsonify }}
         {% endfor %}
       </ul>
 
