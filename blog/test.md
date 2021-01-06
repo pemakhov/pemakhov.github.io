@@ -1,2 +1,2 @@
-### A test page.
+A test page.
 Some test.
