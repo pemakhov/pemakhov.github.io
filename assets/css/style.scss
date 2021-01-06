@@ -12,8 +12,17 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+#nav li {
+  margin-left: 0 3rem 0 0;
+  padding: 0;
 }
 
 #nav li a {
   display: block;
+  margin: 0;
+  padding: 0;
 }
