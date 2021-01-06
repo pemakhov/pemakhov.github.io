@@ -4,4 +4,4 @@ title: About
 ---
 # About me
 
-Comming soon... maybe
+Comming soon...
