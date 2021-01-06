@@ -32,14 +32,15 @@
       {% endif %}
     </header>
     
-    <h2>{{ site.data.samplelist.docs_list_title }}</h2>
-    <ul id="nav">
+    <main id="content" class="main-content" role="main">
+     
+      <h2>{{ site.data.samplelist.docs_list_title }}</h2>
+      <ul id="nav">
         {% for item in site.data.samplelist.docs %}
         <li><a href="{{ item.url }}">{{ item.title }}</a></li>
         {% endfor %}
-    </ul>
+      </ul>
 
-    <main id="content" class="main-content" role="main">
       {{ content }}
 
       <footer class="site-footer">
