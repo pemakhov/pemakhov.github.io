@@ -5,7 +5,7 @@ docs:
   url: /
 
 - title: Blog
-  url: blog.html
+  url: /blog.html
 
 - title: About
-  url: about.html
+  url: /about.html
