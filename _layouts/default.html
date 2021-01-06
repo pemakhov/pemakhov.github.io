@@ -31,18 +31,15 @@
         <a href="{{ site.github.tar_url }}" class="btn">Download .tar.gz</a>
       {% endif %}
     </header>
-    
-    <div>
-      Debug
-      <div>{{ variable | jsonify }}</div>
-    </div>
-    
+        
     <main id="content" class="main-content" role="main">
       
       <h2>{{ site.data.navigation.docs_list_title }}</h2>
       <ul id="nav">
         {% for item in site.data.navigation.docs %}
         <li {% if navigation.url == page.url %} class="active"{% endif %}><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {{ navigation.url | jsonify }}
+        {{ page.url | jsonify }}
         {% endfor %}
       </ul>
 
