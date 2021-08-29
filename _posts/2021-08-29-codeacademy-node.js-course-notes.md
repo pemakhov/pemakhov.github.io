@@ -37,8 +37,13 @@ const os = require('os');
 ```
 
 `os.type()` — returns the computer’s operating system.
+
 `os.arch()` — returns the operating system CPU architecture.
+
 `os.networkInterfaces()` — returns information about the network interfaces of the computer, such as IP and MAC address.
+
 `os.homedir()` — returns the current user’s home directory.
+
 `os.hostname()` — returns the hostname of the operating system.
+
 `os.uptime()` — returns the system uptime, in seconds.
