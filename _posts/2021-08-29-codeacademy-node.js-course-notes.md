@@ -11,7 +11,7 @@ This is what the console in a browser's developer's tools is, or a node console 
 In node REPL every time you press `Enter`, the code evaluates. Type `.editor` to enter the editor mode.
 
 ## 3. The Process module
-`process.memoryUsage()` returns an object like this:
+`process.memoryUsage()` - returns an object like this:
 
 ```
 {
@@ -23,6 +23,6 @@ In node REPL every time you press `Enter`, the code evaluates. Type `.editor` to
 }
 ```
 
-`process.memoryUsage().heapUsed` returns will return the number of bytes used by the current process.
+`process.memoryUsage().heapUsed` - returns the number of bytes used by the current process.
 
-`process.argv` returns the array containing arguments the current process was initiated with. The zero argument is the absolute path to the Node, which runs the process.
+`process.argv` - returns the array containing arguments the current process was initiated with. The zero argument is the absolute path to the Node, which runs the process.
