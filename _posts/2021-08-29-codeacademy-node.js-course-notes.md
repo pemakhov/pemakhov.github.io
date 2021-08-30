@@ -2,15 +2,15 @@
 layout: default
 author: Serhii Pemakhov
 ---
-# Codeacademy node.js course notes
+# Codeacademy Node.js Course Notes
 
 ## 1. **REPL** - read - evaluate - print loop.
 This is what the console in a browser's developer's tools is, or a node console in a terminal.
 
-## 2. Editor in node REPL
+## 2. Editor in Node REPL
 In node REPL every time you press `Enter`, the code evaluates. Type `.editor` to enter the editor mode.
 
-## 3. The Process module
+## 3. The Process Module
 A built-in module (doesn't require being required).
 
 `process.memoryUsage()` - returns an object like this:
@@ -29,7 +29,7 @@ A built-in module (doesn't require being required).
 
 `process.argv` - returns the array containing arguments the current process was initiated with. The zero argument is the absolute path to the Node, which runs the process.
 
-## 4. The OS module
+## 4. The OS Module
 Not built-in module, therefore should be required like this:
 
 ```
@@ -47,3 +47,51 @@ const os = require('os');
 `os.hostname()` — returns the hostname of the operating system.
 
 `os.uptime()` — returns the system uptime, in seconds.
+
+## 5. The Util Module
+Not built-in module, therefore should be required.
+
+### Types
+Allows to check a type
+
+```
+const os = require('util');
+
+const today = new Date();
+const earthDay = 'April 22, 2022';
+ 
+console.log(util.types.isDate(today));    // true
+console.log(util.types.isDate(earthDay)); // false
+```
+
+### Promisify
+Allows to perform a callback function into promise.
+
+## 6. Node Modules
+
+**Modules** are reusable pieces of code in a file that can be exported and then imported for use in another file.
+_The words “module” and “file” are often used interchangeably_
+
+Module exports:
+
+```
+// my-module.js
+
+const myFunction = () => {};
+const anotherFunction = () => {};
+
+module.exports.myFunction = myFunction;
+module.exports.anotherFunction = anotherFunction;
+```
+
+Import:
+
+```
+const myModule = require('./my-module.js');
+```
+
+or
+
+```
+const { myFunction, anotherFunction } = require('./my-module.js');
+```
