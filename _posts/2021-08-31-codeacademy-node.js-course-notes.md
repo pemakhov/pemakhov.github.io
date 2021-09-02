@@ -4,15 +4,15 @@ author: Serhii Pemakhov
 ---
 # Codeacademy Node.js Course Notes
 
-## 1. **REPL** - read - evaluate - print loop.
+### 1. **REPL** - read - evaluate - print loop.
 
 This is what the console in a browser's developer's tools is, or a node console in a terminal.
 
-## 2. Editor in Node REPL
+### 2. Editor in Node REPL
 
 In node REPL every time you press `Enter`, the code evaluates. Type `.editor` to enter the editor mode.
 
-## 3. The Process Module
+### 3. The Process Module
 
 A built-in module (doesn't require being required).
 
@@ -32,7 +32,7 @@ A built-in module (doesn't require being required).
 
 `process.argv` - returns the array containing arguments the current process was initiated with. The zero argument is the absolute path to the Node, which runs the process.
 
-## 4. The OS Module
+### 4. The OS Module
 
 Not built-in module, therefore should be required like this:
 
@@ -52,11 +52,11 @@ const os = require('os');
 
 `os.uptime()` — returns the system uptime, in seconds.
 
-## 5. The Util Module
+### 5. The Util Module
 
 Not built-in module, therefore should be required.
 
-### Types
+#### Types
 Allows to check a type
 
 ```
@@ -69,10 +69,10 @@ console.log(util.types.isDate(today));    // true
 console.log(util.types.isDate(earthDay)); // false
 ```
 
-### Promisify
+#### Promisify
 Allows to perform a callback function into promise.
 
-## 6. Node Modules
+### 6. Node Modules
 
 **Modules** are reusable pieces of code in a file that can be exported and then imported for use in another file.
 _The words “module” and “file” are often used interchangeably_
@@ -101,7 +101,7 @@ or
 const { myFunction, anotherFunction } = require('./my-module.js');
 ```
 
-## 7. The Events Module
+### 7. The Events Module
 
 ```
 // require events module
@@ -122,7 +122,7 @@ myEmitter.on('celebration', listenerCallback);
 myEmitter.emit('celebration', 'New Year');
 ```
 
-## 8. Input / Output
+### 8. Input / Output
 
 `console.log` in Node.js is just a wrapper on `process.stdout.write()`.
 
@@ -135,7 +135,7 @@ process.stdout.write('Hello world');
 process.stdin.on('data', (userInput) => console.log(`Your input is ${userInput}`));
 ```
 
-## 9. The Error Module
+### 9. The Error Module
 
 Many asynchronous functions use _error-first callback functions_ - callback functions which have an **error** as the first expected argument and **data** as the second argument.
 
@@ -150,7 +150,7 @@ const errorFirstCallback = (err, data)  => {
 }
 ```
 
-## 10. The Buffer Module
+### 10. The Buffer Module
 
 The buffer module is in the global scope.
 **Buffer** objects are similar to the arrays of numbers from 0 to 255, each one represents a byte of data.
@@ -198,7 +198,7 @@ const bufferConcat = Buffer.concat(array);
 console.log(bufferConcat); // output: [104, 101, 108, 108, 111, 119, 111, 114, 108, 100]
 ```
 
-## 11. The FS module
+### 11. The FS module
 
 The technique when JavaScript in a browser has only limited access to the file system is called **sandboxing**.
 
@@ -214,4 +214,34 @@ let readDataCallback = (err, data) => {
 };
  
 fs.readFile('./file.txt', 'utf-8', readDataCallback);
+```
+
+### 12. Streaming Data
+
+Streaming data allows you to work with small pieces of data, not overloading the RAM.
+
+Reading the file 'shoppingList.txt' line by line and printing out the data.
+```
+const readLine = require('readLine');
+const fs = require('fs');
+
+const myInterface = readLine.createInterface({
+  input: fs.createReadStream('./shoppingList.txt')
+});
+
+const printData = (data) => console.log(`Item: ${data}`);
+
+myInterface.on('line', printData);
+```
+
+Writing into a file.
+
+```
+const fs = require('fs')
+ 
+const fileStream = fs.createWriteStream('output.txt');
+ 
+fileStream.write('This is the first line!'); 
+fileStream.write('This is the second line!');
+fileStream.end();
 ```
