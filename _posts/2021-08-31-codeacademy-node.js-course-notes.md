@@ -245,3 +245,84 @@ fileStream.write('This is the first line!');
 fileStream.write('This is the second line!');
 fileStream.end();
 ```
+
+### 13. The Timers Module
+
+setTimeout, setInterval and setImmediate are functions of the global timer module.
+
+### 14. The HTTP Module
+
+```
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.end('Server is running!');
+});
+ 
+server.listen(8080, () => {
+  const { address, port } = server.address();
+  console.log(`Server is listening on: http://${address}:${port}`);
+})
+```
+
+### 15. URL Anatomy and URL Module
+
+`https://website.com/articles?author=john&year=2020`
+
+- https:// - protocol
+- website.com - domain or host
+- /articles - path
+- author=john, year=2000 - key/value queries
+- & query separator
+
+```
+const url = require('url');
+
+const URL_TO_PARSE = 'https://www.example.com/p/a/t/h?prop1=value1&prop2=value2';
+
+const myUrl = new URL(URL_TO_PARSE);
+
+const { hostname, pathname, searchParams } = myUrl;
+
+console.log(hostname); // output: example.com
+
+myUrl.hostname = 'test.org';
+myUrl.pathname = 'posts';
+[...myUrl.searchParams.keys()].forEach((key) => myUrl.searchParams.delete(key));
+
+console.log(myUrl.toString()); // output: https://test.org/posts
+```
+
+### 16. Routing
+
+The http server accepts the request listener function. In this function you can handle the request according to the method:
+
+```
+const server = http.createServer((req, res) => {
+  const { method } = req;
+  switch(method) {
+    case 'GET':
+      return handleGetRequest(req, res);
+    case 'POST':
+      return handlePostRequest(req, res);
+    default:
+      throw new Error(`Unsupported request method: ${method}`);
+  }
+});
+```
+
+Then you can handle the route in a handler function:
+
+```
+const handleGetRequest = (req, res) => {
+  const { pathname } = new URL(req.url);
+  const data = { message: 'hello world' };
+
+  if (pathname === '/users') {
+    return res.end(JSON.stringify(data));
+  }
+
+  res.statusCode = 404;
+  return res.end('bad request');
+};
+```
